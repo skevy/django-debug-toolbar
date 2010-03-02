@@ -64,11 +64,11 @@ class DebugToolbarMiddleware(object):
 
     def process_request(self, request):
         if self.show_toolbar(request):
-            original_urlconf = getattr(request, 'urlconf', settings.ROOT_URLCONF)
-            debug_toolbar.urls.urlpatterns += patterns('',
-                ('', include(original_urlconf)),
-            )
-            request.urlconf = 'debug_toolbar.urls'
+            # original_urlconf = getattr(request, 'urlconf', settings.ROOT_URLCONF)
+            # debug_toolbar.urls.urlpatterns += patterns('',
+            #     ('', include(original_urlconf)),
+            # )
+            # request.urlconf = 'debug_toolbar.urls'
 
             self.debug_toolbars[request] = DebugToolbar(request)
             for panel in self.debug_toolbars[request].panels:
